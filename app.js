@@ -19,9 +19,11 @@ app.use(history());
 const compression = require('compression')
 app.use(compression());
 
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); //extended: false 表示使用系统模块querystring来处理，也是官方推荐的、extended: true; 表示使用第三方模块qs来处理
 
 
 const proxy = require("http-proxy-middleware");
